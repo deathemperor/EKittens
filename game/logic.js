@@ -92,10 +92,10 @@ export default (io, EK) => {
         return;
       }
 
-      //Check if nickname is between 3 and 8 characters
-      if (nickname.length < 3 || nickname.length > 8) {
+      //Check if nickname is between 2 and 12 characters
+      if (nickname.length < 2 || nickname.length > 12) {
         socket.emit($.LOBBY.CONNECT, {
-          error: "Name has to be between 3 and 8 characters!"
+          error: "Name has to be between 2 and 12 characters!"
         });
         return;
       }
