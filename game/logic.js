@@ -1,4 +1,3 @@
-
 import User from "./user";
 
 import Game from "./game";
@@ -19,9 +18,9 @@ export default (io, EK) => {
 
   io.on("connection", socket => {
     /**
-         * Disconnect from the server
-         * @param {Object} data The data
-         */
+     * Disconnect from the server
+     * @param {Object} data The data
+     */
     socket.on("disconnect", data => {
       if (socket.id in EK.connectedUsers) {
         //Get the user id and fetch their details
@@ -54,15 +53,15 @@ export default (io, EK) => {
     });
 
     /**
-         * Connect to lobby
-         * Responds with connected users and game list.
-         *
-         * Request Data: {
-         *   nickname: "User nickname"
-         * }
-         *
-         * @param {Object} data The data
-         */
+     * Connect to lobby
+     * Responds with connected users and game list.
+     *
+     * Request Data: {
+     *   nickname: "User nickname"
+     * }
+     *
+     * @param {Object} data The data
+     */
     socket.on($.LOBBY.CONNECT, data => {
       const valid = data && data.hasOwnProperty("nickname");
 
@@ -131,15 +130,15 @@ export default (io, EK) => {
     });
 
     /**
-         * Create a game.
-         * Responds with game data if created else an error.
-         *
-         * Request Data: {
-         *   title: "Game title"
-         * }
-         *
-         * @param {Object} data The data
-         */
+     * Create a game.
+     * Responds with game data if created else an error.
+     *
+     * Request Data: {
+     *   title: "Game title"
+     * }
+     *
+     * @param {Object} data The data
+     */
     socket.on($.GAME.CREATE, data => {
       const title = data.title;
       if (!title || title.length <= 0 || title.length >= 30) {
@@ -715,15 +714,15 @@ export default (io, EK) => {
     }); //End $.GAME.PLAYER.PLAY
 
     /**
-         * Nope a played set.
-         *
-         * Request Data: {
-         *   gameId: "gameId",
-         *   setId: "Set id to nope"
-         * }
-         *
-         * @param {Object} data The data
-         */
+     * Nope a played set.
+     *
+     * Request Data: {
+     *   gameId: "gameId",
+     *   setId: "Set id to nope"
+     * }
+     *
+     * @param {Object} data The data
+     */
     socket.on($.GAME.PLAYER.NOPE, ({ gameId, setId }) => {
       const game = EK.gameList[gameId];
       const user = EK.connectedUsers[socket.id];
@@ -766,15 +765,15 @@ export default (io, EK) => {
     });
 
     /**
-         * Give a favor to a player
-         *
-         * Request Data: {
-         *   gameId: "game id",
-         *   to: "The user id to do favor to",
-         *   card: "The card id"
-         * }
-         * @param {Object} data The data
-         */
+     * Give a favor to a player
+     *
+     * Request Data: {
+     *   gameId: "game id",
+     *   to: "The user id to do favor to",
+     *   card: "The card id"
+     * }
+     * @param {Object} data The data
+     */
     socket.on($.GAME.PLAYER.FAVOR, data => {
       //Get the game and check if it exists
       const game = EK.gameList[data.gameId];
