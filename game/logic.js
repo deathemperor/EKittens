@@ -451,7 +451,7 @@ export default (io, EK) => {
           if (player.drawAmount >= 1) {
             //Make player draw a card and if it is an explode then remove a defuse
             //If player has no defuse then player is out
-            const drawn = game.drawCards(player, player.drawAmount);
+            const drawn = game.drawCards(player, 1);
             socket.emit($.GAME.PLAYER.DRAW, {
               game: game.sanitize(),
               cards: drawn,
