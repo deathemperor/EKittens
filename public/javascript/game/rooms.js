@@ -54,8 +54,8 @@ var Lobby = {
   },
 
   /**
-     * Update the user list display
-     */
+   * Update the user list display
+   */
   updateUserList: function(EK) {
     //Clear users
     $("#userList .content").empty();

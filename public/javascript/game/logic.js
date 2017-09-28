@@ -235,19 +235,21 @@ $(function($) {
   });
 
   //Card click
-  $(document).on("click touchstart", "#playingInput .card", function(e) {
-    e.preventDefault();
-    toggleCardSelected($(this));
-    GameRoom.updateInputDisplay(main);
-  });
-
-  $(document).on("click touchstart", ".popup .card", function(e) {
-    e.preventDefault();
-    $(".popup .card").data("selected", "false");
-    $(".popup .card").removeClass("card-selected");
-    toggleCardSelected($(this));
-    GameRoom.updateInputDisplay(main);
-  });
+  $(document)
+    .on("click", "#playingInput .card", function(e) {
+      console.log("event", e.type);
+      e.preventDefault();
+      toggleCardSelected($(this));
+      GameRoom.updateInputDisplay(main);
+    })
+    .on("click", ".popup .card", function(e) {
+      e.preventDefault();
+      $(".popup .card")
+        .data("selected", "false")
+        .removeClass("card-selected");
+      toggleCardSelected($(this));
+      GameRoom.updateInputDisplay(main);
+    });
 
   //******** IO Events ********//
   io.on($C.LOBBY.CONNECT, function(data) {
@@ -656,7 +658,9 @@ $(function($) {
       GameRoom.update(main);
 
       //Update nope button timer
-      $("#nopeGameButton").text("Nope").data("count", 0);
+      $("#nopeGameButton")
+        .text("Nope")
+        .data("count", 0);
     } else {
       //Tell users that nope was played
       var user = data.player.user;

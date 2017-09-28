@@ -28,13 +28,6 @@ body {
 
 @media (max-width: 641px) {
   /* small devices */
-  html,
-  body,
-  .container-fluid,
-  .room {
-    height: 1000px;
-  }
-
   #loginInput {
     width: 100% !important;
   }
@@ -65,15 +58,16 @@ body {
 }
 
 @media (max-height: 600px) {
-  html,
-  body,
-  .container-fluid,
-  .room {
-    height: 1000px;
-  }
   .card {
     zoom: 0.6;
     margin-left: -40px;
+  }
+  #playArea .cardDisplay {
+    margin-top: 18% !important;
+  }
+  #playingInput a {
+    top: -25% !important;
+    font-size: 55px;
   }
 }
 
@@ -88,6 +82,8 @@ body {
   /* display: none; */
   color: white;
   z-index: 10;
+  align-items: center;
+  justify-content: center;
 }
 
 #lobby {
@@ -97,15 +93,7 @@ body {
 
 #loginInput {
   width: 50%;
-  height: 100%;
-  min-width: 50%;
-  min-height: 100%;
-}
-
-#loginInput div {
-  width: 100%;
-  min-width: 100%;
-  padding: 10px;
+  margin-top: 5%;
 }
 
 #loginInput .title {
@@ -127,26 +115,25 @@ body {
   background: #d9534f;
   border-radius: 5px;
   font-size: 1em;
+  padding: 10px;
+  text-align: center;
 }
 
 #gameList {
   height: 100%;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  /* background: #0a0a33; */
   padding: 0;
   overflow: hidden;
 }
 
 #userList {
-  /* background: #2e2e69; */
   background: rgba(0, 0, 0, 0.5);
   height: 100%;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0;
   overflow: hidden;
-  /* border-left: 1px #46469f solid; */
 }
 
 .top-bar {
@@ -155,18 +142,9 @@ body {
   width: 100%;
 }
 
-#gameList .top-bar,
-#chatBox .top-bar {
-  /* background: #26264c; */
-}
-
 #newGameButton {
   float: right;
   border-radius: 0px;
-}
-
-#userList .top-bar {
-  /* background: #26264c; */
 }
 
 .content {
@@ -200,7 +178,6 @@ body {
 .user {
   min-width: 100%;
   width: 100%;
-  /* border-bottom: 1px #46469f solid; */
   padding: 5px;
   margin-bottom: 5px;
   padding-bottom: 10px;
@@ -292,23 +269,29 @@ body {
   z-index: 5;
 }
 
-#game #container {
-  height: calc(100% - 250px);
-  position: relative;
-}
-
 #game #playArea {
-  height: calc(100% - 204px);
+  display: flex;
+  align-content: center;
+  /* padding-top: 10%; */
+  /* height: calc(100% - 204px);
   position: relative;
-  margin-top: 15%;
+  margin-top: 15%; */
 }
 
 #playArea #playInput {
   width: 100%;
 }
 
-#playArea .cardDisplay {
-  left: 63%;
+#playingInput {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 30%;
 }
 
 #playArea .cardDisplay .card:last-child {
@@ -328,13 +311,6 @@ body {
   margin-left: -175px;
 }
 
-#game #container #input {
-  display: inline-block;
-  position: absolute;
-  width: 100%;
-  top: 60%;
-}
-
 #game #leave {
   position: absolute;
   top: 0;
@@ -348,15 +324,10 @@ body {
 }
 
 #waitingInput {
-  margin-bottom: 20px;
-}
-
-#chat {
-  /* height: 250px; */
-  /* background: #2e2e69;
-  -webkit-box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.75); */
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #playerList {
@@ -372,10 +343,6 @@ body {
 }
 
 #chatBox {
-  /* background: #0a0a33;
-  float: right;
-  padding: 0;
-	height: 100%; */
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   top: 10px;
@@ -390,20 +357,6 @@ body {
   overflow: auto;
 }
 
-.cardInput {
-  position: fixed;
-  bottom: 10%;
-  width: 100%;
-  /* margin-top: 20px; */
-  /* background: #111133; */
-  /* background: #fff; */
-  /* height: 170px; */
-  /* position: relative; */
-  /* -webkit-box-shadow: inset 0px 0px 26px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 0px 26px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 0px 26px 0px rgba(0, 0, 0, 0.75); */
-}
-
 #playArea .cardInput {
   margin: 0;
   max-height: 250px;
@@ -414,8 +367,27 @@ body {
   background: none;
 }
 
+#playArea .cardDisplay {
+  margin-top: 27%;
+  padding-left: 15%;
+}
+
+#playingInput a {
+  position: absolute;
+  top: 0;
+}
+
+#playingInput .cardDisplay {
+  position: absolute;
+  left: 0;
+  top: auto;
+}
+
+#messages {
+  display: none;
+}
+
 .cardDisplay {
-  overflow-x: scroll;
   width: 100%;
   white-space: nowrap;
   overflow: visible !important;
@@ -494,16 +466,6 @@ body {
   color: #b58865;
   border: 5px solid #b58865;
 } */
-
-.card span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-  word-wrap: break-word;
-  word-break: break-all;
-  white-space: normal;
-  padding: 10px;
-}
 
 .card-big {
   height: 150px;
