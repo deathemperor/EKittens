@@ -5,6 +5,20 @@ body {
   height: 100%;
 }
 
+.touch #fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  overflow: hidden !important;
+}
+
 .room {
   background-color: #b40a1d;
   background-image: -o-radial-gradient(circle, #b40a1d 10%, #48140f 100%);
@@ -16,7 +30,7 @@ body {
       endColorstr="#48140f",
       GradientType=1
     );
-  /* background-color: #19194c !important; */
+
   color: white !important;
   position: absolute;
   width: 100%;
@@ -66,7 +80,7 @@ body {
     margin-top: 18% !important;
   }
   #playingInput a {
-    top: -25% !important;
+    top: -12% !important;
     font-size: 55px;
   }
 }
@@ -272,10 +286,8 @@ body {
 #game #playArea {
   display: flex;
   align-content: center;
-  /* padding-top: 10%; */
-  /* height: calc(100% - 204px);
-  position: relative;
-  margin-top: 15%; */
+  height: calc(100vh - 150px);
+  align-items: center;
 }
 
 #playArea #playInput {
@@ -368,7 +380,6 @@ body {
 }
 
 #playArea .cardDisplay {
-  margin-top: 27%;
   padding-left: 15%;
 }
 
@@ -380,7 +391,7 @@ body {
 #playingInput .cardDisplay {
   position: absolute;
   left: 0;
-  top: auto;
+  bottom: -70px;
 }
 
 #messages {
@@ -389,8 +400,9 @@ body {
 
 .cardDisplay {
   width: 100%;
+  padding-top: 20px;
   white-space: nowrap;
-  overflow: visible !important;
+  overflow-x: auto !important;
 }
 
 .card {
@@ -405,7 +417,7 @@ body {
   transition: all 0.1s ease-in-out;
 }
 
-.card:hover {
+.no-touch .card:hover {
   margin-top: -30px !important;
 }
 

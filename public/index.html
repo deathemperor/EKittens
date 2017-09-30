@@ -5,7 +5,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="manifest" href="/manifest.json">
 	<title>EK</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
@@ -19,6 +21,10 @@
 
 <body>
 	<div class="container-fluid">
+		<div id="fullscreen" class="room">
+			<a href="javascript:;" id="go-fullscreen" class="bigShakeText">Click!</a>
+			<div>to start playing!</div>
+		</div>
 		<div id="login" class="room">
 			<form id="loginInput">
 				<div class="center">
@@ -141,11 +147,11 @@
 							<div class="form-group">
 								<label for="player-select">Select player:</label>
 								<select class="form-control" id="player-select">
-                                    <option value="1">1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+										<option value="1">1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+								</select>
 							</div>
 							<div class="cardInput">
 								<div class="cardDisplay center text-center">
@@ -235,6 +241,13 @@
 								<img class="card card-attack" src="assets/cards/attack.png" />
 								<img class="card card-nope" src="assets/cards/nope.png" />
 								<img class="card card-shuffle" src="assets/cards/shuffle.png" />
+								<img class="card card-defuse" src="assets/cards/defuse.png" />
+								<img class="card card-potato" src="assets/cards/potato.png" />
+								<img class="card card-skip" src="assets/cards/skip.png" />
+								<img class="card card-favor" src="assets/cards/favor.png" />
+								<img class="card card-attack" src="assets/cards/attack.png" />
+								<img class="card card-nope" src="assets/cards/nope.png" />
+								<img class="card card-shuffle" src="assets/cards/shuffle.png" />
 							</div>
 						</div>
 					</div>
@@ -275,7 +288,7 @@
 	</div>
 	<!-- Dependencies -->
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="javascript/jquery/jquery-3.2.1.min.js"></script>
+	<script src="javascript/libs/jquery-3.2.1.min.js"></script>
 	<script src="javascript/game/constants.js"></script>
 	<script src="javascript/game/EK.js"></script>
 	<script src="javascript/game/rooms.js"></script>

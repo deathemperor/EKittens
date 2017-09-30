@@ -11,9 +11,10 @@ class CardSet {
        * Generate a random id
        * @returns {String}   A random id
        */
-    this.generateRandomID = () => `_${Math.random()
-  .toString(36)
-  .substr(2, 9)}`;
+    this.generateRandomID = () =>
+      `_${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
 
     //The set id
     this.id = this.generateRandomID();
