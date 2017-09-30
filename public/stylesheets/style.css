@@ -204,7 +204,6 @@ body {
 
 .user .status {
   display: inline-block;
-  float: right;
   padding: 2px;
   padding-left: 10px;
   padding-right: 10px;
