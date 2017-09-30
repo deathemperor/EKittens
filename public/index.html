@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<link rel="manifest" href="/manifest.json">
 	<title>EK</title>
 
@@ -16,7 +17,7 @@
 	 crossorigin="anonymous">
 
 	<!-- Game -->
-	<link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -25,6 +26,11 @@
 			<a href="javascript:;" id="go-fullscreen" class="bigShakeText">Click!</a>
 			<div>to start playing!</div>
 		</div>
+		<div id="rotate" class="room">
+				<strong>Please</strong>
+				<a href="javascript:;" class="bigShakeText">rotate</a>
+				<strong>your screen</strong>
+			</div>
 		<div id="login" class="room">
 			<form id="loginInput">
 				<div class="center">
@@ -68,7 +74,7 @@
 			<div id="leave">
 				<div id="leaveButton" class="btn btn-danger">X</div>
 			</div>
-			<div id="overlay" style="display: none;">
+			<div id="overlay">
 				<div id="backdrop"></div>
 				<div id="givePopup" class="popup center text-center">
 					<div class="container">
@@ -175,11 +181,11 @@
 							<div class="form-group">
 								<label for="player-select">Select player:</label>
 								<select class="form-control" id="player-select">
-                                    <option value="1">1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+										<option value="1">1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -289,6 +295,8 @@
 	<!-- Dependencies -->
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="javascript/libs/jquery-3.2.1.min.js"></script>
+	<script src="javascript/libs/jquery-migrate-3.0.0.min.js"></script>
+	<script src="javascript/libs/jquery.mobile.custom.min.js"></script>
 	<script src="javascript/game/constants.js"></script>
 	<script src="javascript/game/EK.js"></script>
 	<script src="javascript/game/rooms.js"></script>
