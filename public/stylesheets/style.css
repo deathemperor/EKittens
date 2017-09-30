@@ -203,7 +203,6 @@ body {
 }
 
 .user .status {
-  display: inline-block;
   padding: 2px;
   padding-left: 10px;
   padding-right: 10px;
@@ -211,6 +210,7 @@ body {
   transform: translateY(-2px);
   border-radius: 4px;
   margin-right: 5px;
+  float: right;
 }
 
 .user #name {

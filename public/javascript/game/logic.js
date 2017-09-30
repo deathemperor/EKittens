@@ -66,9 +66,9 @@ $(function($) {
 
   $("#newGameButton").on("click touchstart", function(e) {
     e.preventDefault();
-    var name = prompt("Type in a room title:", "");
-    if (name) {
-      io.emit($C.GAME.CREATE, { title: name });
+    var user = main.getCurrentUser();
+    if (user && user.name) {
+      io.emit($C.GAME.CREATE, { title: user.name });
     }
   });
 
