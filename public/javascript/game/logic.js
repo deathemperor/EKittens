@@ -1,22 +1,49 @@
 /* TODO: Remove players from player list if they are dead */
 
 $(function($) {
-  //Main game instance
+  // Detect touchable screen
+  document.documentElement.className +=
+    "ontouchstart" in document.documentElement ? " touch" : " no-touch";
+
+  // Main game instance
   var main = new EK();
 
-  //Connect to socket
+  // Connect to socket
   io = io.connect();
 
-  //Util function
+  // Util function
   var dataSelected = function(index) {
     return $(this).data("selected") === "true";
   };
 
-  //Init scrollbars
-  // $(".scrollable").perfectScrollbar();
-  // $(window).on("resize", function() {
-  //   $(".scrollable").perfectScrollbar("update");
-  // });
+  var $doc = $(document);
+
+  window.addEventListener(
+    "orientationchange",
+    function() {
+      if (window.orientation === 0) {
+        $("#fullscreen").show();
+      } else {
+        $("#fullscreen").hide();
+      }
+    },
+    false
+  );
+
+  $("#go-fullscreen").on("click", function(e) {
+    try {
+      var docElm = document.documentElement;
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+      } else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+      } else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+      }
+      screen.orientation.lock("landscape").catch(function(e) {});
+      $("#fullscreen").hide();
+    } catch (e) {}
+  });
 
   //******** Click Events ********//
   $("#messages-toggle").on("click", function(e) {
@@ -45,8 +72,8 @@ $(function($) {
     }
   });
 
-  //Since we dynamically create the button, we have to call the clikc function this way
-  $(document).on("click touchstart", "#joinGameButton", function(e) {
+  //Since we dynamically create the button, we have to call the click function this way
+  $doc.on("click touchstart", "#joinGameButton", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
     if (id) {
@@ -235,7 +262,7 @@ $(function($) {
   });
 
   //Card click
-  $(document)
+  $doc
     .on("click", "#playingInput .card", function(e) {
       console.log("event", e.type);
       e.preventDefault();
