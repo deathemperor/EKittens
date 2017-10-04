@@ -211,7 +211,7 @@ var GameRoom = {
           } else {
             nopeButton.removeClass("disabled");
           }
-
+          drawButton.hide();
           nopeButton.show();
         } else {
           nopeButton.hide();

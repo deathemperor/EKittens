@@ -59,7 +59,7 @@ export default {
     FUTURE: "Future",
     FAVOR: "Favor",
     SHUFFLE: "Shuffle",
-    REGULAR: "Regular",
+    REGULAR: "Regular"
     // REVERSE: "Reverse"
   },
 

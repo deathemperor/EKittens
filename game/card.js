@@ -1,6 +1,4 @@
-
 class Card {
-
   /**
    * A playing card
    * @param {String} id The card id
